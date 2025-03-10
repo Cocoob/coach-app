@@ -23,7 +23,7 @@ const Hero = () => {
         <p className="text-lg mt-4">
           Un programme adapté à toi, guidé par un coach spécialisé
         </p>
-        <Button text="En savoir plus" />
+        <Button text="En savoir plus" className="mt-6" />
       </div>
     </section>
   );

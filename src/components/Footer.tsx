@@ -8,7 +8,9 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
         {/* Navigation */}
         <div>
-          <h3 className="text-xl font-semibold text-[#e7ff6a]">Navigation</h3>
+          <h3 className="text-xl font-semibold text-[var(--color-fitness)]">
+            Navigation
+          </h3>
           <ul className="mt-4 space-y-2 text-gray-400">
             <li>
               <Link href="/" className="hover:text-white">
@@ -35,7 +37,9 @@ const Footer = () => {
 
         {/* Contact */}
         <div>
-          <h3 className="text-xl font-semibold text-[#e7ff6a]">Contact</h3>
+          <h3 className="text-xl font-semibold text-[var(--color-fitness)]">
+            Contact
+          </h3>
           <p className="mt-4 text-gray-400">Besoin d’aide ? Une question ?</p>
           <div className="mt-4 flex justify-center md:justify-start space-x-4">
             <a
@@ -56,7 +60,9 @@ const Footer = () => {
 
         {/* Mentions légales & CGU */}
         <div>
-          <h3 className="text-xl font-semibold text-[#e7ff6a]">Informations</h3>
+          <h3 className="text-xl font-semibold text-[var(--color-fitness)]">
+            Informations
+          </h3>
           <ul className="mt-4 space-y-2 text-gray-400">
             <li>
               <Link href="/mentions-legales" className="hover:text-white">
