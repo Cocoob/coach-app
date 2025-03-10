@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Button from "@/components/Button";
 import Input from "@/components/Input";
-import CustomLink from "@/components/CustomLink";
+import Button from "@/components/Button";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -41,7 +40,6 @@ const RegisterPage = () => {
       confirmPassword: "",
       server: "",
     };
-    let isValid = true;
 
     if (!formData.name) newErrors.name = "Le nom est requis.";
     if (!formData.email) newErrors.email = "L'email est requis.";
@@ -57,8 +55,9 @@ const RegisterPage = () => {
     if (!Object.values(newErrors).every((err) => err === "")) return;
 
     setLoading(true);
+
     try {
-      const response = await fetch("http://localhost:5000/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -68,12 +67,14 @@ const RegisterPage = () => {
         }),
       });
 
-      const data = await response.json();
-      if (!response.ok)
-        throw new Error(data.error || "Une erreur est survenue.");
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Erreur lors de l'inscription.");
+      }
+
       router.push("/login");
     } catch (error: any) {
-      setErrors({ ...errors, server: error.message });
+      setErrors((prevErrors) => ({ ...prevErrors, server: error.message }));
     } finally {
       setLoading(false);
     }
@@ -137,12 +138,6 @@ const RegisterPage = () => {
             className="w-full rounded-lg"
           />
         </form>
-
-        <div className="mt-6 text-center text-gray-400">
-          <p>
-            Déjà un compte ? <CustomLink href="/login" text="Se connecter" />
-          </p>
-        </div>
       </div>
     </section>
   );
